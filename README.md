@@ -1,3 +1,3 @@
 # exercism---javascript-track
 
-### (https://exercism.io/profiles/christopherchateau)
+### https://exercism.io/profiles/christopherchateau
