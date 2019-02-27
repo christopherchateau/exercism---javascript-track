@@ -11,8 +11,7 @@ export const transpose = input => {
         rowLength = result[j].length;
       }
       if (i > rowLength) {
-        let spaces = " ".repeat(i - rowLength);
-        str = spaces + str;
+        str = str.padStart(i - rowLength + 1, ' ');
       }
       result[j] ? result[j] += str : result[j] = str;
     }
