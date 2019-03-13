@@ -2,17 +2,15 @@ export class WordProblem {
   constructor(question) {
     this.question = question.split(" ");
   }
-  
+
   answer() {
     let formatedQuestion = [];
     let operators = ["plus", "minus", "multiplied", "divided"];
 
     this.question.forEach(str => {
-
       if (operators.includes(str)) {
         formatedQuestion.push(str);
-      } 
-      else if (/\d/.test(str)) {
+      } else if (/\d/.test(str)) {
         formatedQuestion.push(this.formatNumber(str));
       }
     });
@@ -24,18 +22,17 @@ export class WordProblem {
   }
 
   calculate(input) {
-    let total = +input.shift();
+    let total = parseInt(input.shift());
+    let computations = {
+      plus: ind => (total += parseInt(input[ind + 1])),
+      minus: ind => (total -= parseInt(input[ind + 1])),
+      multiplied: ind => (total *= parseInt(input[ind + 1])),
+      divided: ind => (total /= parseInt(input[ind + 1]))
+    };
 
     input.forEach((str, ind) => {
-      switch (str) {
-        case "plus": total += +input[ind + 1];
-          break;
-        case "minus": total -= +input[ind + 1];
-          break;
-        case "multiplied": total *= +input[ind + 1];
-          break;
-        case "divided": total /= +input[ind + 1];
-          break;
+      if (computations[str]) {
+        computations[str](ind);
       }
     });
     return total;
