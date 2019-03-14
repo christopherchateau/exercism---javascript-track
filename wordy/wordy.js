@@ -10,7 +10,7 @@ export class WordProblem {
     this.question.forEach(str => {
       if (operators.includes(str)) {
         formatedQuestion.push(str);
-      } else if (/\d/.test(str)) {
+      } else if (str.match(/\d/)) {
         formatedQuestion.push(this.formatNumber(str));
       }
     });
