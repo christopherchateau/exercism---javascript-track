@@ -7,7 +7,7 @@ export class Say {
       throw Error("Number must be between 0 and 999,999,999,999.");
     }
     let english = [], numArr = [];
-    
+
     n = n.toString().split("").reverse().join("");
 
     for (let i = 0; i < n.length; i += 3) {
@@ -29,21 +29,22 @@ export class Say {
         tempArr.shift();
       }
 
-      if (nums[parseInt(tempArr.join(""))]) {
-        english.push(nums[parseInt(tempArr.join(""))]);
+      if (nums[+tempArr.join("")]) {
+        english.push(nums[+tempArr.join("")]);
       } 
       
       else if (tempArr.length === 2) {
-        let num = tens[tempArr[0]];
+        let tenth = tens[tempArr[0]];
+
         if (tempArr[1] !== "0") {
-          num += "-" + nums[tempArr[1]];
+          tenth += "-" + nums[tempArr[1]];
         }
-        english.push(num);
+        english.push(tenth);
       }
-      if (
-        tempArr.slice(-1).join("").match(/[^0]/)
-      )
-      addHighNum();
+
+      if (tempArr.slice(-1).join("").match(/[^0]/)) {
+        addHighNum();
+      }
     }
     return english.join(" ").trim();
   }
