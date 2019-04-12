@@ -1,16 +1,7 @@
 export class Matrix {
   constructor(str) {
-    this.rows = this.makeRows(str);
+    this.rows = str.split("\n").map(row => row.split(" ").map(Number));
     this.columns = this.makeColumns(this.rows);
-  }
-
-  makeRows(str) {
-    let rows = [];
-    str = str.split("\n");
-    for (let i = 0; i < str.length; i++) {
-      rows.push(str[i].split(" ").map(Number));
-    }
-    return rows;
   }
 
   makeColumns(rows) {
