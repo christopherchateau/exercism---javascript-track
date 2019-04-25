@@ -6,7 +6,7 @@ export class Triplet {
   }
 }
 
-Triplet.where = ({ maxFactor = 0, minFactor = 0, sum }) => {
+Triplet.where = ({ minFactor = 3, maxFactor = 0, sum }) => {
   const triplets = [];
 
   for (let a = minFactor; a < maxFactor - 1; a++) {
